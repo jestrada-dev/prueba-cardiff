@@ -1,0 +1,67 @@
+<h1>Agenda de personas</h1>
+
+<form [formGroup]="form" (ngSubmit)="addPerson()">
+  Nombres:
+  <input
+    type="name"
+    formControlName="nombre"
+    placeholder="Tu nombre"
+    autofocus
+  />
+
+  Apellidos:
+  <input
+    type="name"
+    formControlName="apellidos"
+    placeholder="Tus apellidos"
+  />
+
+  Cédula:
+  <input
+    type="text"
+    formControlName="cedula"
+    placeholder="Tu Cédula"
+  />
+
+  Género:
+  <select
+    formControlName="genero"
+    placeholder="Seleccione el género"
+    >
+    <option *ngFor="let genero of generos" [value]="genero.descripcion">
+      {{ genero.descripcion }}
+     </option>
+  </select>
+
+  Edad:
+  <input
+    type="number"
+    formControlName="edad"
+    placeholder="Tu Edad"
+  />
+
+  <button type="submit">Agregar</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nombres</th>
+      <th>Apellidos</th>
+      <th>Cédula</th>
+      <th>Género</th>
+      <th>Edad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let persona of personas">
+      <td>{{ persona?.id }}</td>
+      <td>{{ persona?.nombres }}</td>
+      <td>{{ persona?.apellidos }}</td>
+      <td>{{ persona?.cedula }}</td>
+      <td>{{ persona?.genero }}</td>
+      <td>{{ persona?.edad }}</td>
+    </tr>
+  </tbody>
+</table>
